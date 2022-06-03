@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="ناحیه کاربری" />
+    <item
+        android:id="@+id/shoppingCardFragment"
+        android:icon="@drawable/ic_shopingcard"
+        android:title="سبد خرید" />
+    <item
+        android:id="@+id/categoryFragment"
+        android:icon="@drawable/ic_category"
+        android:title="دسته بندی"
+        />
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="خانه" />
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Store/RminKala/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1995" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/drawable/splash_img.xml" value="0.14" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/category_card_item.xml" value="0.33" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/fragment_dashboard.xml" value="0.209375" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/fragment_detail.xml" value="0.23854166666666668" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/fragment_setting.xml" value="0.209375" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/fragment_shopping_card.xml" value="0.209375" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/popular_item.xml" value="0.1717948717948718" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/layout/product_item.xml" value="0.33" />
+        <entry key="..\:/Store/RminKala/app/src/main/res/menu/but_menu.xml" value="0.209375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

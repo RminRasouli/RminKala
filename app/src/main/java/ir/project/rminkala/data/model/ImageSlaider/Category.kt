@@ -1,0 +1,7 @@
+package ir.project.rminkala.data.model.ImageSlaider
+
+data class Category(
+    val id: Int,
+    val name: String,
+    val slug: String
+)

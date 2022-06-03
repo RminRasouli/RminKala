@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ir.project.rminkala.ui.Home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="ir.project.rminkala.ui.Detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="productName"
+            app:argType="string" />
+        <argument
+            android:name="productId"
+            app:argType="string" />
+        <argument
+            android:name="productPrice"
+            app:argType="string" />
+        <argument
+            android:name="productImage"
+            app:argType="ir.project.rminkala.data.model.product.Image[]" />
+        <argument
+            android:name="productDescription"
+            app:argType="string" />
+        <argument
+            android:name="productRatingCount"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCardFragment"
+        android:name="ir.project.rminkala.ui.ShoppingCard.ShoppingCardFragment"
+        android:label="fragment_shopping_card"
+        tools:layout="@layout/fragment_shopping_card" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="ir.project.rminkala.ui.Category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="ir.project.rminkala.ui.Dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+</navigation>
