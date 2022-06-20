@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ir.project.rminkala.data.api.StoreApiService
+import ir.project.rminkala.data.remote.api.StoreApiService
 import ir.project.rminkala.data.remote.RemoteDataSource
 import ir.project.rminkala.data.remote.RemoteDataSourcePr
 import ir.project.rminkala.util.Constance.BASE_URL

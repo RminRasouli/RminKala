@@ -1,4 +1,4 @@
-package ir.project.rminkala.ui.Home
+package ir.project.rminkala.ui.Detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.databinding.ProductItemBinding
+import ir.project.rminkala.ui.Home.HomeFragmentDirections
 
-
-class HomeAdapter :
-    ListAdapter<Product, HomeAdapter.ProductViewHolder>(ProductComparator()) {
+class DetailProductApapter :
+    ListAdapter<Product, DetailProductApapter.ProductViewHolder>(ProductComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding =
@@ -38,9 +38,9 @@ class HomeAdapter :
                 starProduct.text = product.average_rating
                 Glide.with(itemView)
                     .load("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                    .error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-//                    .load(product.images[1].src)
-//                    .error(product.image[1].alt)
+                    //.error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
+                    //.load(product.images[1].src)
+                    //.error(product.image[1].alt)
                     .into(imgProduct)
 
             }
@@ -51,7 +51,8 @@ class HomeAdapter :
                     product.price,
                     product.images.toTypedArray(),
                     product.description,
-                    product.rating_count
+                    product.rating_count,
+                    product.categories.toTypedArray()
                 )
                 it.findNavController().navigate(
                     action
@@ -68,4 +69,3 @@ class HomeAdapter :
             oldItem == newItem
     }
 }
-

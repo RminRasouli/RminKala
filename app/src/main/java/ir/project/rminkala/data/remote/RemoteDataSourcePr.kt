@@ -1,6 +1,6 @@
 package ir.project.rminkala.data.remote
 
-import ir.project.rminkala.data.api.StoreApiService
+import ir.project.rminkala.data.remote.api.StoreApiService
 import ir.project.rminkala.data.model.ImageSlaider.PhotoSlider
 import ir.project.rminkala.data.model.categoty.CategoryItem
 import ir.project.rminkala.data.model.product.Product

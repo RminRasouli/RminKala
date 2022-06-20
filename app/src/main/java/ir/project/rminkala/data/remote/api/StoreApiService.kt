@@ -1,10 +1,9 @@
-package ir.project.rminkala.data.api
+package ir.project.rminkala.data.remote.api
 
 
 import ir.project.rminkala.data.model.ImageSlaider.PhotoSlider
 import ir.project.rminkala.data.model.categoty.CategoryItem
 import ir.project.rminkala.data.model.product.Product
-import ir.project.rminkala.databinding.CategoryCardItemBinding
 import ir.project.rminkala.util.Constance.CONSUMER_KEY
 import ir.project.rminkala.util.Constance.CONSUMER_SECRET
 import ir.project.rminkala.util.Constance.END_PONT_CATEGORIES

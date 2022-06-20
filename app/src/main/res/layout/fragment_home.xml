@@ -5,8 +5,7 @@
     android:id="@+id/root_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Home.HomeFragment"
-    >
+    tools:context=".ui.Home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,28 +23,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/header"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:elevation="2dp"
                     android:orientation="horizontal"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/ic_baseline_search_24" />
+
                     <TextView
-                        android:id="@+id/tv_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/myfont"
-                        android:text="RminKala"
-                        android:textColor="@color/main"
-                        android:textSize="25sp"
+                        android:layout_gravity="center"
+                        android:text="جســـــــت و جــــــــو مــــــحصــولـات"
                         android:textStyle="bold" />
-
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/tv_would_like_to_eat"
@@ -56,16 +61,16 @@
                     android:text="چی میخای بخری"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/header"
-                    app:layout_constraintTop_toBottomOf="@id/header" />
+                    app:layout_constraintEnd_toEndOf="@+id/searchbar"
+                    app:layout_constraintTop_toBottomOf="@id/searchbar" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/random_meal"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
+                    android:layout_marginEnd="10dp"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true"
@@ -78,10 +83,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:iss_auto_cycle="true"
-                        app:iss_delay="1000"
                         app:iss_corner_radius="5"
-                        app:iss_period="5000"
-                        />
+                        app:iss_delay="1000"
+                        app:iss_period="5000" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView

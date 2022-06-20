@@ -1,8 +1,10 @@
 package ir.project.rminkala.data.repository
 
 
+import ir.project.rminkala.data.local.LocalDataSource
 import ir.project.rminkala.data.model.ImageSlaider.PhotoSlider
 import ir.project.rminkala.data.model.categoty.CategoryItem
+import ir.project.rminkala.data.model.localDataModel.ProductLocalModel
 import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.data.remote.RemoteDataSource
 import ir.project.rminkala.di.IoDispatcher
@@ -16,7 +18,7 @@ class Repository
 @Inject constructor(
     @IoDispatcher
     private val dispatcher: CoroutineDispatcher,
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
 ) {
 
     suspend fun getRemoteAllProduct(): Response<List<Product>> {
@@ -27,8 +29,9 @@ class Repository
         return remoteDataSource.getCategories()
     }
 
-    suspend fun getSliderPhoto() : Response<PhotoSlider> {
+    suspend fun getSliderPhoto(): Response<PhotoSlider> {
         return remoteDataSource.getSliderPhoto()
     }
+
 
 }

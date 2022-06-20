@@ -36,6 +36,9 @@
         <argument
             android:name="productRatingCount"
             app:argType="string" />
+        <argument
+            android:name="productCategories"
+            app:argType="ir.project.rminkala.data.model.product.Category[]" />
     </fragment>
     <fragment
         android:id="@+id/shoppingCardFragment"
