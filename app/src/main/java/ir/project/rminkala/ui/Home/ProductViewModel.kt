@@ -9,6 +9,10 @@ import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.data.repository.Repository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
@@ -16,7 +20,6 @@ class ProductViewModel @Inject constructor(
 ) : ViewModel() {
     val product : MutableLiveData<List<Product>>
         get() = _lastProduct
-
     private val _lastProduct = MutableLiveData<List<Product>>()
 
 
@@ -25,7 +28,16 @@ class ProductViewModel @Inject constructor(
 
     private val _lastSlidePhoto = MutableLiveData<PhotoSlider>()
 
+
+
+    private val _productListFlow: MutableStateFlow<List<Product>> = MutableStateFlow(listOf())
+    val productListFlow get() = _productListFlow.asStateFlow()
+
+
+
     init {
+
+        getFlowProductTest()
         viewModelScope.launch {
             val responseProduct =  repository.getRemoteAllProduct()
             if (responseProduct.isSuccessful){
@@ -38,6 +50,14 @@ class ProductViewModel @Inject constructor(
                 _lastSlidePhoto.value = responseSlidePhoto.body()
             }
         }
+    }
 
+    private fun getFlowProductTest() {
+        viewModelScope.launch {
+            val flow = repository.getFlowProductTest()
+            flow.collect {
+                _productListFlow.emit(it)
+            }
+        }
     }
 }

@@ -133,6 +133,8 @@ dependencies {
     //SlideImage
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
+    //Search bar
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 }
 
 kapt {

@@ -38,9 +38,9 @@ class ProductAdapter :
                 tvProductPrice.text = product.price
                 starProduct.text = product.average_rating
                 Glide.with(itemView)
-                 //   .load("https://icon-library.com/images/break-icon/break-icon-13.jpg")
+                    .load("https://icon-library.com/images/break-icon/break-icon-13.jpg")
                     //.error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                    .load(product.images[1].src)
+                   // .load(product.images[1].src)
                 //    .error(product.image[1].alt)
                     .into(imgProduct)
 

@@ -9,6 +9,8 @@ import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.data.remote.RemoteDataSource
 import ir.project.rminkala.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -31,6 +33,13 @@ class Repository
 
     suspend fun getSliderPhoto(): Response<PhotoSlider> {
         return remoteDataSource.getSliderPhoto()
+    }
+
+    fun getFlowProductTest(): Flow<List<Product>> = flow {
+        val response = remoteDataSource.giveAllProduct()
+        if (response.isSuccessful) {
+            emit(response.body() ?: listOf())
+        }
     }
 
 

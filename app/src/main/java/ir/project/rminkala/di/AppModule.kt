@@ -1,9 +1,12 @@
 package ir.project.rminkala.di
 
+import android.app.Application
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ir.project.rminkala.data.local.db.ProductDataBase
 import ir.project.rminkala.data.remote.api.StoreApiService
 import ir.project.rminkala.data.remote.RemoteDataSource
 import ir.project.rminkala.data.remote.RemoteDataSourcePr
@@ -42,4 +45,10 @@ object AppModule {
     @Provides
     fun providesService(retrofit: Retrofit): StoreApiService =
         retrofit.create(StoreApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application) : ProductDataBase =
+        Room.databaseBuilder(app, ProductDataBase::class.java, "Product_ShoppingCard")
+            .build()
 }

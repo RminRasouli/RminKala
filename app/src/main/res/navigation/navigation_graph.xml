@@ -39,6 +39,9 @@
         <argument
             android:name="productCategories"
             app:argType="ir.project.rminkala.data.model.product.Category[]" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingCardFragment"

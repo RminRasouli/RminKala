@@ -45,7 +45,7 @@ class DetailProductApapter :
 
             }
             itemView.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                val action = DetailFragmentDirections.actionDetailFragmentSelf(
                     product.name,
                     product.id,
                     product.price,

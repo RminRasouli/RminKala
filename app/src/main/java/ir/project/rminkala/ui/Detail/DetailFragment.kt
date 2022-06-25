@@ -41,6 +41,24 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         binding.productAdded.setOnClickListener {
 
         }
+
+
+
+        binding.apply {
+            recyclerDetail.apply {
+                adapter = detailProductApapter
+                layoutManager = LinearLayoutManager(
+                    requireContext(), LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                setHasFixedSize(true)
+            }
+        }
+        productViewModel.product.observe(viewLifecycleOwner) {
+            detailProductApapter.submitList(it)
+        }
+
+
     }
         private fun slideImage() {
             val imageSlider = requireView().findViewById<ImageSlider>(R.id.slide_product_image)

@@ -6,12 +6,14 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.media.Image
 import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -28,18 +30,23 @@ import dagger.hilt.android.AndroidEntryPoint
 import ir.project.rminkala.R
 import ir.project.rminkala.data.local.data_store.Theme
 import ir.project.rminkala.databinding.ActivityMainBinding
-import ir.project.rminkala.util.logger
+import ir.project.rminkala.ui.Home.ProductViewModel
+
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel: ViewModel by viewModels()
-
+    private val viewModelProduct: ProductViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setTheme(R.style.Theme_RminKala)
         setContentView(R.layout.activity_main)
+
+
+
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navController = findNavController(R.id.frag_host)
@@ -52,8 +59,6 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 val info = viewModel.preferences.first()
-                logger("theme: ${info.theme}")
-
                 val mode = info.theme.mode
                 val currentMode = AppCompatDelegate.getDefaultNightMode()
                 Log.d("Main", "preferencesInit: " + currentMode.toString())
