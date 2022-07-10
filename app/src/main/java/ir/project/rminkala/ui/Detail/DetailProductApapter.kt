@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.databinding.ProductItemBinding
-import ir.project.rminkala.ui.Home.HomeFragmentDirections
 
 class DetailProductApapter :
     ListAdapter<Product, DetailProductApapter.ProductViewHolder>(ProductComparator()) {
@@ -18,32 +17,31 @@ class DetailProductApapter :
         val binding =
             ProductItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductViewHolder(binding)
+
+
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
             holder.bind(currentItem)
-
         }
+
     }
 
     class ProductViewHolder(private val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(product: Product) {
             binding.apply {
                 tvProductName.text = product.name
                 tvProductPrice.text = product.price
                 starProduct.text = product.average_rating
-                Glide.with(itemView)
-                    .load("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                    //.error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                    //.load(product.images[1].src)
-                    //.error(product.image[1].alt)
-                    .into(imgProduct)
-
+                if (product.images.isNotEmpty())
+                    Glide.with(itemView)
+                        .load(product.images[0].src)
+                        .into(imgProduct)
             }
+
             itemView.setOnClickListener {
                 val action = DetailFragmentDirections.actionDetailFragmentSelf(
                     product.name,

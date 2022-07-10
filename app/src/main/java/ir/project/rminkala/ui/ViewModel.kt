@@ -21,11 +21,6 @@ class ViewModel @Inject constructor(
 
     private val _response = MutableLiveData<List<Product>>()
     init {
-        viewModelScope.launch {
-            val res =  repository.getRemoteAllProduct()
-            if (res.isSuccessful){
-                _response.value = res.body()
-            }
-        }
+
     }
 }

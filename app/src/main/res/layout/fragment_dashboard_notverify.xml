@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F4"
     tools:context=".ui.Dashboard.DashboardFragment">
 
     <ImageView
@@ -39,7 +40,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/iran_sans"
         android:padding="24dp"
-        android:text="برای ورود و یا ثبت نام در فروشگاه شماره موبایل یا پست الکترونیکی خود را وارد کنید "
+        android:text="برای ورود و یا ثبت نام در فروشگاه پست الکترونیکی خود را وارد کنید "
         android:textSize="13.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,7 +54,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
-        android:hint="موبایل با پست ابکترونیکی"
+        android:hint="پـست الکترونیکی"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,16 +62,17 @@
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
         >
-
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:fontFamily="@font/iran_sans"
+            android:inputType="textEmailAddress"
             android:textSize="12dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/ButtonConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -84,4 +86,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField" />
+
+
+    <TextView
+        android:id="@+id/customerId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CustomID"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

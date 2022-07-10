@@ -2,18 +2,18 @@ package ir.project.rminkala.ui.Home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import ir.project.rminkala.R
 import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.databinding.ProductItemBinding
+import ir.project.rminkala.util.FaNum
 
 
-class ProductAdapter :
-    ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductComparator()) {
+class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(ProductComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding =
@@ -34,15 +34,26 @@ class ProductAdapter :
 
         fun bind(product: Product) {
             binding.apply {
+                tvProductPriceOff.isInvisible = true
                 tvProductName.text = product.name
-                tvProductPrice.text = product.price
-                starProduct.text = product.average_rating
+                tvProductPrice.text = FaNum.convert(product.price)
+                if(product.average_rating == "0.00"){
+                    starProduct.text = "بدون نظر"
+                }else{
+                    starProduct.text = product.average_rating
+                }
+
+                val image = product.images[0].src
                 Glide.with(itemView)
-                    .load("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                    //.error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
-                   // .load(product.images[1].src)
-                //    .error(product.image[1].alt)
+                    .load(image)
+                    .error("https://icon-library.com/images/break-icon/break-icon-13.jpg")
                     .into(imgProduct)
+
+                if (product.sale_price != "") {
+                    tvProductPriceOff.isInvisible = false
+                    tvProductPriceOff.text = FaNum.convert(product.regular_price)
+                    tvProductPriceOff.paint.isStrikeThruText = true
+                }
 
             }
             itemView.setOnClickListener {
@@ -52,9 +63,8 @@ class ProductAdapter :
                     product.price,
                     product.images.toTypedArray(),
                     product.description,
-                    product.rating_count ,
-                    product.categories.toTypedArray()
-                )
+                    product.rating_count,
+                    product.categories.toTypedArray()                )
                 it.findNavController().navigate(
                     action
                 )

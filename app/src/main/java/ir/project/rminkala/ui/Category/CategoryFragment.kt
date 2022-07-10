@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ir.project.rminkala.R
 import ir.project.rminkala.databinding.FragmentCategoryBinding
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CategoryFragment : Fragment(R.layout.fragment_category) {
@@ -26,8 +30,12 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
                 setHasFixedSize(true)
             }
         }
-        categoryViwModel.category.observe(viewLifecycleOwner) {
-            categoryAdapter.submitList(it)
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                categoryViwModel.category.collect {
+                    categoryAdapter.submitList(it)
+                }
+            }
         }
     }
 }

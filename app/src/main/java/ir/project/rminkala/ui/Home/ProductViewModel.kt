@@ -3,16 +3,18 @@ package ir.project.rminkala.ui.Home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.project.rminkala.data.model.ImageSlaider.PhotoSlider
 import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.data.repository.Repository
+import ir.project.rminkala.ui.paging.ProductPagingSource
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
@@ -22,28 +24,16 @@ class ProductViewModel @Inject constructor(
         get() = _lastProduct
     private val _lastProduct = MutableLiveData<List<Product>>()
 
-
     val slidePhoto :  MutableLiveData<PhotoSlider>
         get() = _lastSlidePhoto
 
     private val _lastSlidePhoto = MutableLiveData<PhotoSlider>()
 
-
-
     private val _productListFlow: MutableStateFlow<List<Product>> = MutableStateFlow(listOf())
     val productListFlow get() = _productListFlow.asStateFlow()
 
-
-
     init {
-
-        getFlowProductTest()
-        viewModelScope.launch {
-            val responseProduct =  repository.getRemoteAllProduct()
-            if (responseProduct.isSuccessful){
-                _lastProduct.value = responseProduct.body()
-            }
-        }
+        getAllProduct()
         viewModelScope.launch {
             val responseSlidePhoto =  repository.getSliderPhoto()
             if (responseSlidePhoto.isSuccessful){
@@ -52,12 +42,19 @@ class ProductViewModel @Inject constructor(
         }
     }
 
-    private fun getFlowProductTest() {
+    private fun getAllProduct() {
         viewModelScope.launch {
-            val flow = repository.getFlowProductTest()
+            val flow = repository.getAllProduct()
             flow.collect {
                 _productListFlow.emit(it)
             }
         }
     }
+
+    val productPager = Pager(
+        PagingConfig(pageSize = 30)
+    ) {
+        ProductPagingSource(repository)
+    }.flow.cachedIn(viewModelScope)
+
 }

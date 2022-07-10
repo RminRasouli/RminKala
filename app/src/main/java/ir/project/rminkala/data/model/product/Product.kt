@@ -16,5 +16,6 @@ data class Product(
     val price: String,
     val rating_count: String,
     val regular_price: String,
-    val tags: List<Tag>,
+    val sale_price : String,
+    val tags: List<Tag>
 ) : Parcelable

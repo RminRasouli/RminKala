@@ -5,7 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.project.rminkala.data.model.categoty.CategoryItem
+import ir.project.rminkala.data.model.product.Product
 import ir.project.rminkala.data.repository.Repository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,15 +17,18 @@ import javax.inject.Inject
 class CategoryViwModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
-    val category : MutableLiveData<List<CategoryItem>>
-        get() = _category
+    private val _category: MutableStateFlow<List<CategoryItem>> = MutableStateFlow(listOf())
+    val category get() = _category.asStateFlow()
 
-    private val _category = MutableLiveData<List<CategoryItem>>()
     init {
+        getAllCategoryList()
+    }
+
+    private fun getAllCategoryList() {
         viewModelScope.launch {
-            val res =  repository.getCategories()
-            if (res.isSuccessful){
-                _category.value = res.body()
+            val flow = repository.getAllCategoryList()
+            flow.collect {
+                _category.emit(it)
             }
         }
     }

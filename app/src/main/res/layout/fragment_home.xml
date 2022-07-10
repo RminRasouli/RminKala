@@ -5,6 +5,7 @@
     android:id="@+id/root_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F4"
     tools:context=".ui.Home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -55,7 +56,8 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/iran_sans"
                     android:text="چی میخای بخری"
-                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/searchbar"
                     app:layout_constraintTop_toBottomOf="@id/searchbar" />
@@ -64,9 +66,9 @@
                     android:id="@+id/random_meal"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="5dp"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true"
@@ -91,8 +93,8 @@
                     android:layout_marginTop="18dp"
                     android:fontFamily="@font/iran_sans"
                     android:text="کــالا های محبوب"
-
-                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/tv_would_like_to_eat"
                     app:layout_constraintTop_toBottomOf="@id/random_meal" />
@@ -101,8 +103,8 @@
                     android:id="@+id/rec_view_meals_popular"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_over_pup_items" />
@@ -114,7 +116,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/iran_sans"
                     android:text="دسته بندی"
-                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/tv_over_pup_items"
                     app:layout_constraintTop_toBottomOf="@id/rec_view_meals_popular" />
@@ -138,11 +141,22 @@
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scrollbars="none" />
+                        android:scrollbars="none"
+                        app:spanCount="3"/>
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-
+    <ir.project.rminkala.ui.wiget.StateView
+        android:id="@+id/state_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        app:state_text="RminKala"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

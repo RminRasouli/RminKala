@@ -2,12 +2,14 @@ package ir.project.rminkala.ui.Category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.project.rminkala.data.model.categoty.CategoryItem
 import ir.project.rminkala.databinding.CategoryCardItemBinding
+import ir.project.rminkala.ui.Home.HomeFragmentDirections
 
 class CategoryAdapter :
     ListAdapter<CategoryItem, CategoryAdapter.CategoryItemViewHolder>(CategoryItemComparator()) {
@@ -34,6 +36,16 @@ class CategoryAdapter :
                     .load(CategoryItem.image.src)
                     .into(imgCategory)
                 textCategory.text = CategoryItem.name
+
+                itemView.setOnClickListener {
+                    val action = CategoryFragmentDirections.actionCategoryFragmentToSearchFragment(
+                      categoryId = CategoryItem.id,
+                        ""
+                    )
+                    it.findNavController().navigate(
+                        action
+                    )
+                }
             }
         }
     }

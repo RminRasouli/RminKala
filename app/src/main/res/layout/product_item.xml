@@ -16,7 +16,6 @@
             android:id="@+id/img_product"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.301"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -27,16 +26,17 @@
             android:id="@+id/tv_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:fontFamily="@font/iran_sans"
-            android:maxHeight="50dp"
+            android:maxWidth="165dp"
             android:maxLines="2"
-            android:text="فلش مموری 64 گیگ"
-
+            android:text="فلش مموری 64 گیگ ایرانشل همراه اول همه چی"
+            android:textColor="@color/black"
             android:textSize="10dp"
             app:layout_constraintEnd_toEndOf="@id/img_product"
+            app:layout_constraintHorizontal_bias="0.985"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_product" />
 
         <TextView
@@ -46,11 +46,27 @@
             android:layout_marginStart="32dp"
             android:fontFamily="@font/iran_sans"
             android:text="1000000"
-            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/img_product"
             app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
-            app:layout_constraintVertical_bias="0.728" />
+            app:layout_constraintVertical_bias="0.733" />
+
+        <TextView
+            android:id="@+id/tv_product_price_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/iran_sans"
+            android:text="1000000"
+            android:textStyle="italic"
+            android:textColor="@color/main"
+            android:textSize="10sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
+            app:layout_constraintEnd_toEndOf="@+id/tv_product_price"
+            app:layout_constraintStart_toEndOf="@+id/icon_price" />
 
         <TextView
             android:id="@+id/icon_price"
